@@ -5,7 +5,7 @@ public class OrderProcessor {
         this.inventory = inventory;
     }
 
-    public void pocessOrder(){
+    public void processOrder(){
 
     }
     public void updateInventory(){

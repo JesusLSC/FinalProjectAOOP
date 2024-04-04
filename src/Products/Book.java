@@ -1,26 +1,17 @@
-public class Book {
-    private String title;
+package Products;
+
+public class Book extends Item {
     private String author;
     private String isbn;
-    private double price;
-    private int quantity;
 
-    public Book(String title, String author, String isbn, double price, int quantity) {
-        this.title = title;
+    public Book(String title, String author, String isbn, String genre, double price, int quantity) {
+        this.setTitle(title);
         this.author = author;
         this.isbn = isbn;
-        this.price = price;
-        this.quantity = quantity;
+        this.setGenre(genre);
+        this.setPrice(price);
+        this.setQuantity(quantity);
     }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getAuthor() {
         return author;
     }
@@ -37,19 +28,5 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public double getPrice() {
-        return price;
-    }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 }

@@ -1,3 +1,5 @@
+import Products.Book;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,6 +10,10 @@ public class Inventory {
         this.books = new HashMap<>();
     }
 
-    // Methods to add, remove, update, and retrieve books from the inventory
+    public void addBook(){};
+    public void removeBook(){};
+    public void updateBook(){};
+    public void retriveBook(){};
+
 }
 
