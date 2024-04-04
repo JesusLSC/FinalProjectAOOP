@@ -1,4 +1,6 @@
 import Products.*;
+import Products.Factories.ItemFactory;
+import Products.Factories.Type;
 
 public class Main {
     public static void main(String[] args) {

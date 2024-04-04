@@ -1,4 +1,6 @@
-package Products;
+package Products.Factories;
+
+import Products.Newspaper;
 
 public class NewspaperFactory {
     public static Newspaper createNewspaper(String title, String genre, double price, int quantity) {

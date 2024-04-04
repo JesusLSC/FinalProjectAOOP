@@ -1,4 +1,9 @@
-package Products;
+package Products.Factories;
+
+import Products.Book;
+import Products.Item;
+import Products.Magazine;
+import Products.Newspaper;
 
 public class ItemFactory {
     public static Item createItem(Type type, String title, String genre, double price, int quantity, String author, String isbn) {
