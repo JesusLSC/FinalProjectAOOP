@@ -1,18 +1,12 @@
 public class OrderProcessor {
-    private Inventory inventory;
+    private OrderMediator orderMediator;
 
-    public OrderProcessor(Inventory inventory) {
-        this.inventory = inventory;
+    public OrderProcessor(OrderMediator orderMediator) {
+        this.orderMediator = orderMediator;
     }
 
-    public void processOrder(){
-
-    }
-    public void updateInventory(){
-
-    }
-    public void calcTotalPrice(){
-
+    public void processOrder(Order order) {
+        orderMediator.processOrder(order);
     }
 }
 

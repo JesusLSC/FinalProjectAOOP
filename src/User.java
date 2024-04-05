@@ -1,18 +1,18 @@
 public class User {
-    private int ID;
+    private int id;
     private String name;
 
-    public User(int ID, String name) {
-        this.ID = ID;
+    public User(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setID(int id) {
+        this.id = id;
     }
 
     public String getName() {

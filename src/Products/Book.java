@@ -4,7 +4,8 @@ public class Book extends Item {
     private String author;
     private String isbn;
 
-    public Book(String title, String author, String isbn, String genre, double price, int quantity) {
+    public Book(int id, String title, String author, String isbn, String genre, double price, int quantity) {
+        this.setId(id);
         this.setTitle(title);
         this.author = author;
         this.isbn = isbn;
