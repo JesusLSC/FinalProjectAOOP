@@ -15,7 +15,7 @@ public class Main {
         User user = UserFactory.createUser("Jesus", "Vazquez", "jesus.vazquez@gmail.com", "555 Melt St.", "5149770747");
 
         // Create some items using explicit casting
-        Book javaProgramming = (Book) ItemFactory.createItem(Type.Book, "Java Programming", "Computer Science", 29.99, 10, "John Doe", "1234567890");
+        Book javaProgramming = (Book) ItemFactory.createItem(Type.Book, "Java Programming", "Computer Science", 29.99, 10, "John Doe", 1234567890);
         Magazine techWeekly = (Magazine) ItemFactory.createItem(Type.Magazine, "Tech Weekly", "Technology", 5.99, 100, "", 0);
         Newspaper dailyNews = (Newspaper) ItemFactory.createItem(Type.Newspaper, "Daily News", "News", 2.99, 200, "", 0);
 
