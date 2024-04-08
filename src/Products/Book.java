@@ -2,9 +2,9 @@ package Products;
 
 public class Book extends Item {
     private String author;
-    private String isbn;
+    private int isbn;
 
-    public Book(int id, String title, String author, String isbn, String genre, double price, int quantity) {
+    public Book(int id, String title, String author, int isbn, String genre, double price, int quantity) {
         this.setId(id);
         this.setTitle(title);
         this.author = author;
@@ -21,11 +21,11 @@ public class Book extends Item {
         this.author = author;
     }
 
-    public String getIsbn() {
+    public int getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(String isbn) {
+    public void setIsbn(int isbn) {
         this.isbn = isbn;
     }
 

@@ -10,7 +10,7 @@ public class ItemFactory {
     private static int lastMagazineId = 0;
     private static int lastNewspaperId = 0;
 
-    public static Item createItem(Type type, String title, String genre, double price, int quantity, String author, String isbn) {
+    public static Item createItem(Type type, String title, String genre, double price, int quantity, String author, int isbn) {
         switch (type) {
             case Book:
                 return createBook(title, author, isbn, genre, price, quantity);
@@ -23,7 +23,7 @@ public class ItemFactory {
         }
     }
 
-    private static Book createBook(String title, String author, String isbn, String genre, double price, int quantity) {
+    private static Book createBook(String title, String author, int isbn, String genre, double price, int quantity) {
         int id = ++lastBookId;
         return new Book(id, title, author, isbn, genre, price, quantity);
     }

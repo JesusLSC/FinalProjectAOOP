@@ -1,3 +1,5 @@
+package Orders;
+
 import Products.*;
 
 public class OrderMediator {

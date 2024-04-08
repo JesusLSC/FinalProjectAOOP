@@ -1,3 +1,5 @@
+package Orders;
+
 import Products.*;
 
 import java.util.List;
@@ -9,11 +11,15 @@ public class Order {
     private List<Magazine> magazines;
     private List<Newspaper> newspapers;
     private double totalPrice;
+    private int userId;
 
-    public Order(Customer customer, List<Book> books, double totalPrice) {
+    public Order(Customer customer, List<Book> books, List<Magazine> magazines, List<Newspaper> newspapers, double totalPrice, int userId) {
         this.customer = customer;
         this.books = books;
+        this.magazines = magazines;
+        this.newspapers = newspapers;
         this.totalPrice = totalPrice;
+        this.userId = userId;
     }
 
     public int getId() {
@@ -64,5 +70,12 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }
 
