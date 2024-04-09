@@ -42,29 +42,22 @@ public class Main {
         newspapers.add(dailyNews);
 
         // Calculate total price
-        double totalPrice = calculateTotalPrice(books, magazines, newspapers);
+        double totalPrice = orderMediator.calculateTotalPrice(books, magazines, newspapers);
+
+        System.out.println(totalPrice);
+        for(int i = 0; i< books.size(); i++){
+            System.out.println(books.get(i).getPrice());
+        }
+        for(int i = 0; i< magazines.size(); i++){
+            System.out.println(magazines.get(i).getPrice());
+        }
+        for(int i = 0; i< newspapers.size(); i++){
+            System.out.println(newspapers.get(i).getPrice());
+        }
 
         // Create and process the order
-        ordersEngineer.createOrder(customer, books, magazines, newspapers, totalPrice, 1524);
+       ordersEngineer.createOrder(customer, books, magazines, newspapers, totalPrice, 1524);
 
-        System.out.println("Order processed successfully.");
-    }
 
-    private static double calculateTotalPrice(List<Book> books, List<Magazine> magazines, List<Newspaper> newspapers) {
-        double totalPrice = 0.0;
-
-        for (Book book : books) {
-            totalPrice += book.getPrice() * book.getQuantity();
-        }
-
-        for (Magazine magazine : magazines) {
-            totalPrice += magazine.getPrice() * magazine.getQuantity();
-        }
-
-        for (Newspaper newspaper : newspapers) {
-            totalPrice += newspaper.getPrice() * newspaper.getQuantity();
-        }
-
-        return totalPrice;
     }
 }

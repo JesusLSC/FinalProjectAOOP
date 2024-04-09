@@ -2,6 +2,8 @@ package Orders;
 
 import Products.*;
 
+import java.util.List;
+
 public class OrderMediator {
     private Inventory inventory;
 
@@ -11,7 +13,6 @@ public class OrderMediator {
 
     public void processOrder(Order order) {
         updateInventory(order);
-        double totalPrice = calculateTotalPrice(order);
         System.out.println("Order processed successfully.");
     }
 
@@ -27,16 +28,18 @@ public class OrderMediator {
         }
     }
 
-    public double calculateTotalPrice(Order order) {
+    public double calculateTotalPrice(List<Book> books, List<Magazine> magazines, List<Newspaper> newspapers) {
         double totalPrice = 0.0;
 
-        for (Book book : order.getBooks()) {
+        for (Book book : books) {
             totalPrice += book.getPrice();
         }
-        for (Magazine magazine : order.getMagazines()) {
+
+        for (Magazine magazine : magazines) {
             totalPrice += magazine.getPrice();
         }
-        for (Newspaper newspaper : order.getNewspapers()) {
+
+        for (Newspaper newspaper : newspapers) {
             totalPrice += newspaper.getPrice();
         }
 

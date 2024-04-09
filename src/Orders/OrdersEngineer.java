@@ -19,7 +19,6 @@ public class OrdersEngineer {
         orderBuilder.buildNewspapers(newspapers);
         orderBuilder.buildTotalPrice(totalPrice);
         orderBuilder.buildUserId(userId);
-
         Order order = orderBuilder.buildOrder();
         processOrder(order);
     }

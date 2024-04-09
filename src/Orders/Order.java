@@ -5,7 +5,7 @@ import Products.*;
 import java.util.List;
 
 public class Order {
-    private int id;
+    private static int orderId = 0;
     private Customer customer;
     private List<Book> books;
     private List<Magazine> magazines;
@@ -14,6 +14,7 @@ public class Order {
     private int userId;
 
     public Order(Customer customer, List<Book> books, List<Magazine> magazines, List<Newspaper> newspapers, double totalPrice, int userId) {
+        orderId++;
         this.customer = customer;
         this.books = books;
         this.magazines = magazines;
@@ -23,11 +24,11 @@ public class Order {
     }
 
     public int getId() {
-        return id;
+        return orderId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int orderId) {
+        this.orderId = orderId;
     }
 
     public List<Magazine> getMagazines() {
