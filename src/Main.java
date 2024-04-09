@@ -64,7 +64,7 @@ public class Main {
        ordersEngineer.createOrder(customer, books, magazines, newspapers, totalPrice, 1524);
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////  GUI SECTION  //////////////////////////////////////////////////////////////////////////
 
 
         JFrame frame = new JFrame("Marvella Manager");
@@ -91,13 +91,13 @@ public class Main {
                 JButton submitButton = new JButton("Submit");
                 registrationFrame.add(submitButton, BorderLayout.SOUTH);
 
-                registrationFrame.setLayout(new GridLayout(6, 1)); // 6 rows, 1 column
+                registrationFrame.setLayout(new GridLayout(6, 1));
 
                 registrationFrame.setVisible(true);
             }
         });
 
-        Dimension buttonSize = new Dimension(15, 5); // Adjust as needed
+        Dimension buttonSize = new Dimension(15, 5);
         registerButton.setPreferredSize(buttonSize);
 
         frame.add(registerButton, BorderLayout.CENTER);
