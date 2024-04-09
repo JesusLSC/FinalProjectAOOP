@@ -7,8 +7,13 @@ import Products.Factories.Type;
 import Products.Factories.ItemFactory;
 import Orders.*;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
@@ -59,5 +64,44 @@ public class Main {
        ordersEngineer.createOrder(customer, books, magazines, newspapers, totalPrice, 1524);
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        JFrame frame = new JFrame("Marvella Manager");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        JLabel label = new JLabel("Marvella Library Management System");
+        JButton registerButton = new JButton("Register New User");
+
+        frame.setLayout(new BorderLayout());
+        frame.add(label, BorderLayout.NORTH);
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame registrationFrame = new JFrame("User Registration");
+                registrationFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                registrationFrame.setSize(400, 300);
+                JTextField[] textFields = new JTextField[5];
+                for (int i = 0; i < 5; i++) {
+                    textFields[i] = new JTextField(20);
+                    registrationFrame.add(textFields[i]);
+                }
+
+                JButton submitButton = new JButton("Submit");
+                registrationFrame.add(submitButton, BorderLayout.SOUTH);
+
+                registrationFrame.setLayout(new GridLayout(6, 1)); // 6 rows, 1 column
+
+                registrationFrame.setVisible(true);
+            }
+        });
+
+        Dimension buttonSize = new Dimension(15, 5); // Adjust as needed
+        registerButton.setPreferredSize(buttonSize);
+
+        frame.add(registerButton, BorderLayout.CENTER);
+
+        frame.setVisible(true);
     }
 }
