@@ -18,18 +18,57 @@ public class Inventory {
         this.newspapers = new HashMap<>();
     }
 
-    public void addBook(Book book){};
-    public void addMagazine(Magazine magazine){};
-    public void addNewspaper(Newspaper newspaper){};
-    public void removeBook(Book book){};
-    public void removeMagazine(Magazine magazine){};
-    public void removeNewspaper(Newspaper newspaper){};
-    public void updateBook(Book book){};
-    public void updateMagazine(Magazine magazine){};
-    public void updateNewspaper(Newspaper newspaper){};
-    public void retriveBook(Book book){};
-    public void retriveMagazine(Magazine magazine){};
-    public void retriveNewspaper(Newspaper newspaper){};
+    public void addBook(Book book) {
+        books.put(book.getTitle(), book);
+    }
 
+    public void addMagazine(Magazine magazine) {
+        magazines.put(magazine.getTitle(), magazine);
+    }
+
+    public void addNewspaper(Newspaper newspaper) {
+        newspapers.put(newspaper.getTitle(), newspaper);
+    }
+
+    public void removeBook(Book book) {
+        books.remove(book.getTitle());
+    }
+
+    public void removeMagazine(Magazine magazine) {
+        magazines.remove(magazine.getTitle());
+    }
+
+    public void removeNewspaper(Newspaper newspaper) {
+        newspapers.remove(newspaper.getTitle());
+    }
+
+    public void updateBook(Book book) {
+        if (books.containsKey(book.getTitle())) {
+            books.put(book.getTitle(), book);
+        }
+    }
+
+    public void updateMagazine(Magazine magazine) {
+        if (magazines.containsKey(magazine.getTitle())) {
+            magazines.put(magazine.getTitle(), magazine);
+        }
+    }
+
+    public void updateNewspaper(Newspaper newspaper) {
+        if (newspapers.containsKey(newspaper.getTitle())) {
+            newspapers.put(newspaper.getTitle(), newspaper);
+        }
+    }
+
+    public Book retrieveBook(String title) {
+        return books.get(title);
+    }
+
+    public Magazine retrieveMagazine(String title) {
+        return magazines.get(title);
+    }
+
+    public Newspaper retrieveNewspaper(String title) {
+        return newspapers.get(title);
+    }
 }
-

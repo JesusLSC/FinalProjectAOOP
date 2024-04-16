@@ -1,8 +1,11 @@
 package Orders;
 
 import Products.Book;
+import Products.Item;
 import Products.Magazine;
 import Products.Newspaper;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConcreteOrderBuilder implements OrderBuilder {
@@ -45,6 +48,16 @@ public class ConcreteOrderBuilder implements OrderBuilder {
 
     @Override
     public Order buildOrder() {
-        return new Order(customer, books, magazines, newspapers, totalPrice, userId);
+        List<Item> items = new ArrayList<>();
+        if (books != null) {
+            items.addAll(books);
+        }
+        if (magazines != null) {
+            items.addAll(magazines);
+        }
+        if (newspapers != null) {
+            items.addAll(newspapers);
+        }
+        return new Order(customer, items, totalPrice, userId);
     }
 }

@@ -1,31 +1,24 @@
-import Products.Book;
-import Products.Factories.CustomerFactory;
-import Products.Factories.UserFactory;
-import Products.Magazine;
-import Products.Newspaper;
-import Products.Factories.Type;
-import Products.Factories.ItemFactory;
+import Products.*;
+import Products.Factories.*;
 import Orders.*;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
-        User user = UserFactory.createUser("Jesus", "Vazquez", "jesus.vazquez@gmail.com", "555 Melt St.", "5149770747");
+        // Create a user
+        User user = UserFactory.createUser("John", "Doe", "john.doe@example.com", "123 Main St", "555-1234");
 
-        // Create some items using explicit casting
-        Book javaProgramming = (Book) ItemFactory.createItem(Type.Book, "Java Programming", "Computer Science", 29.99, 10, "John Doe", 1234567890);
-        Magazine techWeekly = (Magazine) ItemFactory.createItem(Type.Magazine, "Tech Weekly", "Technology", 5.99, 100, "", 0);
-        Newspaper dailyNews = (Newspaper) ItemFactory.createItem(Type.Newspaper, "Daily News", "News", 2.99, 200, "", 0);
+        // Create some items using explicit call
+        Book book = (Book) ItemFactory.createItem(Type.Book, "Java Programming", "Computer Science", 29.99, 10, "John Doe", 1234567890);
+        Magazine magazine = (Magazine) ItemFactory.createItem(Type.Magazine, "Tech Weekly", "Technology", 5.99, 100, "", 0);
+        Newspaper newspaper = (Newspaper) ItemFactory.createItem(Type.Newspaper, "Daily News", "News", 2.99, 200, "", 0);
 
         // Create a customer
-        Customer customer = CustomerFactory.createCustomer("Dara", "best.professor@IamCool.com", "2015 Beverly Hills");
+        Customer customer = CustomerFactory.createCustomer("Dara", "best.proffessor@world.com", "456 Elm St");
+
+
 
         // Create a concrete order builder
         ConcreteOrderBuilder orderBuilder = new ConcreteOrderBuilder();
@@ -38,70 +31,21 @@ public class Main {
 
         // Create lists of items
         List<Book> books = new ArrayList<>();
-        books.add(javaProgramming);
+        books.add(book);
 
         List<Magazine> magazines = new ArrayList<>();
-        magazines.add(techWeekly);
+        magazines.add(magazine);
 
         List<Newspaper> newspapers = new ArrayList<>();
-        newspapers.add(dailyNews);
+        newspapers.add(newspaper);
 
-        // Calculate total price
-        double totalPrice = orderMediator.calculateTotalPrice(books, magazines, newspapers);
+        // Build the order
+        Order order = ordersEngineer.createOrder(customer, books, magazines, newspapers, user.getUserId());
 
-        System.out.println(totalPrice);
-        for(int i = 0; i< books.size(); i++){
-            System.out.println(books.get(i).getPrice());
-        }
-        for(int i = 0; i< magazines.size(); i++){
-            System.out.println(magazines.get(i).getPrice());
-        }
-        for(int i = 0; i< newspapers.size(); i++){
-            System.out.println(newspapers.get(i).getPrice());
-        }
+        // Process the order
+        ordersEngineer.processOrder(order);
 
-        // Create and process the order
-       ordersEngineer.createOrder(customer, books, magazines, newspapers, totalPrice, 1524);
-
-
-////////////////////////////////////////////  GUI SECTION  //////////////////////////////////////////////////////////////////////////
-
-
-        JFrame frame = new JFrame("Marvella Manager");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-        JLabel label = new JLabel("Marvella Library Management System");
-        JButton registerButton = new JButton("Register New User");
-
-        frame.setLayout(new BorderLayout());
-        frame.add(label, BorderLayout.NORTH);
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame registrationFrame = new JFrame("User Registration");
-                registrationFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                registrationFrame.setSize(400, 300);
-                JTextField[] textFields = new JTextField[5];
-                for (int i = 0; i < 5; i++) {
-                    textFields[i] = new JTextField(20);
-                    registrationFrame.add(textFields[i]);
-                }
-
-                JButton submitButton = new JButton("Submit");
-                registrationFrame.add(submitButton, BorderLayout.SOUTH);
-
-                registrationFrame.setLayout(new GridLayout(6, 1));
-
-                registrationFrame.setVisible(true);
-            }
-        });
-
-        Dimension buttonSize = new Dimension(15, 5);
-        registerButton.setPreferredSize(buttonSize);
-
-        frame.add(registerButton, BorderLayout.CENTER);
-
-        frame.setVisible(true);
+        // Display order details
+        Order.displayOrder(order);
     }
 }

@@ -1,8 +1,7 @@
 package Orders;
 
 import Products.*;
-
-import java.util.List;
+import Products.Item;
 
 public class OrderMediator {
     private Inventory inventory;
@@ -16,33 +15,24 @@ public class OrderMediator {
         System.out.println("Order processed successfully.");
     }
 
-    public void updateInventory(Order order) {
-        for (Book book : order.getBooks()) {
-            inventory.removeBook(book);
-        }
-        for (Magazine magazine : order.getMagazines()) {
-            inventory.removeMagazine(magazine);
-        }
-        for (Newspaper newspaper : order.getNewspapers()) {
-            inventory.removeNewspaper(newspaper);
+    private void updateInventory(Order order) {
+        for (Item item : order.getItems()) {
+            if (item instanceof Book) {
+                inventory.removeBook((Book) item);
+            } else if (item instanceof Magazine) {
+                inventory.removeMagazine((Magazine) item);
+            } else if (item instanceof Newspaper) {
+                inventory.removeNewspaper((Newspaper) item);
+            }
         }
     }
 
-    public double calculateTotalPrice(List<Book> books, List<Magazine> magazines, List<Newspaper> newspapers) {
+    public void calculateTotalPrice(Order order) {
         double totalPrice = 0.0;
 
-        for (Book book : books) {
-            totalPrice += book.getPrice();
+        for (Item item : order.getItems()) {
+            totalPrice += item.getPrice();
         }
-
-        for (Magazine magazine : magazines) {
-            totalPrice += magazine.getPrice();
-        }
-
-        for (Newspaper newspaper : newspapers) {
-            totalPrice += newspaper.getPrice();
-        }
-
-        return totalPrice;
+        order.setTotalPrice(totalPrice);
     }
 }

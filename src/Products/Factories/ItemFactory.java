@@ -5,6 +5,8 @@ import Products.Item;
 import Products.Magazine;
 import Products.Newspaper;
 
+import java.util.List;
+
 public class ItemFactory {
     private static int lastBookId = 0;
     private static int lastMagazineId = 0;

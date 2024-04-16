@@ -12,18 +12,18 @@ public class OrdersEngineer {
         this.orderMediator = orderMediator;
     }
 
-    public void createOrder(Customer customer, List<Book> books, List<Magazine> magazines, List<Newspaper> newspapers, double totalPrice, int userId) {
+    public Order createOrder(Customer customer, List<Book> books, List<Magazine> magazines, List<Newspaper> newspapers, double totalPrice) {
         orderBuilder.buildCustomer(customer);
         orderBuilder.buildBooks(books);
         orderBuilder.buildMagazines(magazines);
         orderBuilder.buildNewspapers(newspapers);
         orderBuilder.buildTotalPrice(totalPrice);
-        orderBuilder.buildUserId(userId);
         Order order = orderBuilder.buildOrder();
         processOrder(order);
+        return order;
     }
 
-    private void processOrder(Order order) {
+    public void processOrder(Order order) {
         orderMediator.processOrder(order);
     }
 }

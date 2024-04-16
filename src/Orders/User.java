@@ -1,7 +1,8 @@
 package Orders;
 
 public class User {
-    private static int userId = 0;
+    private static int lastUserId = 1;
+    private int userId;
     private String fName;
     private String lName;
     private String email;
@@ -9,12 +10,16 @@ public class User {
     private String phoneNumber;
 
     public User(String fName, String lName, String email, String address, String phoneNumber) {
-        userId++;
+        this.userId = generateUserId();
         this.fName = fName;
         this.lName = lName;
         this.email = email;
         this.address = address;
         this.phoneNumber = phoneNumber;
+    }
+
+    private int generateUserId() {
+        return ++lastUserId;
     }
 
     public int getUserId() {

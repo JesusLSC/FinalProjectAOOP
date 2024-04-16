@@ -7,6 +7,14 @@ public abstract class Item {
     private double price;
     private int quantity;
 
+    public Item(int id, String title, String genre, double price, int quantity) {
+        setId(id);
+        setTitle(title);
+        setGenre(genre);
+        setPrice(price);
+        setQuantity(quantity);
+    }
+
     public int getId() {
         return id;
     }
@@ -15,20 +23,20 @@ public abstract class Item {
         this.id = id;
     }
 
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public double getPrice() {
